@@ -7,15 +7,15 @@
  */
 void instruct_add(stack_t **stack, unsigned int line)
 {
-int n = 0;
-if (var.len_stack < 2)
-{
-fprintf(stderr, "L%u: can't add, stack too short\n", line);
-exit(EXIT_FAILURE);
-}
-n += (*stack)->n;
-instruct_pop(stack, line);
-(*stack)->n += n;
+    int n = 0;
+    if (var.len_stack < 2)
+    {
+        fprintf(stderr, "L%u: can't add, stack too short\n", line);
+        exit(EXIT_FAILURE);
+    }
+    n += (*stack)->n;
+    instruct_pop(stack, line);
+    (*stack)->n += n;
 }
 
 /**
@@ -23,9 +23,9 @@ instruct_pop(stack, line);
  * @stack: pointer to the top node of stack
  * @line: the current file line number calling instruction
  */
-void instruct_nop(stack_t **stack __attribute__ ((unused)), unsigned int line)
+void instruct_nop(stack_t **stack __attribute__((unused)), unsigned int line)
 {
-(void) line;
+    (void)line;
 }
 
 /**
@@ -35,15 +35,15 @@ void instruct_nop(stack_t **stack __attribute__ ((unused)), unsigned int line)
  */
 void instruct_sub(stack_t **stack, unsigned int line)
 {
-int n;
-if (var.len_stack < 2)
-{
-fprintf(stderr, "L%u: can't sub, stack too short\n", line);
-exit(EXIT_FAILURE);
-}
-n = (*stack)->n;
-instruct_pop(stack, line);
-(*stack)->n -= n;
+    int n;
+    if (var.len_stack < 2)
+    {
+        fprintf(stderr, "L%u: can't sub, stack too short\n", line);
+        exit(EXIT_FAILURE);
+    }
+    n = (*stack)->n;
+    instruct_pop(stack, line);
+    (*stack)->n -= n;
 }
 
 /**
@@ -53,20 +53,20 @@ instruct_pop(stack, line);
  */
 void instruct_div(stack_t **stack, unsigned int line)
 {
-int n;
-if (var.len_stack < 2)
-{
-fprintf(stderr, "L%u: can't div, stack too short\n", line);
-exit(EXIT_FAILURE);
-}
-n = (*stack)->n;
-instruct_pop(stack, line);
-if (n == 0)
-{
-fprintf(stderr, "L%u: division by zero\n", line);
-exit(EXIT_FAILURE);
-}
-(*stack)->n /= n;
+    int n;
+    if (var.len_stack < 2)
+    {
+        fprintf(stderr, "L%u: can't div, stack too short\n", line);
+        exit(EXIT_FAILURE);
+    }
+    n = (*stack)->n;
+    instruct_pop(stack, line);
+    if (n == 0)
+    {
+        fprintf(stderr, "L%u: division by zero\n", line);
+        exit(EXIT_FAILURE);
+    }
+    (*stack)->n /= n;
 }
 
 /**
@@ -76,13 +76,13 @@ exit(EXIT_FAILURE);
  */
 void instruct_mul(stack_t **stack, unsigned int line)
 {
-int n;
-if (var.len_stack < 2)
-{
-fprintf(stderr, "L%u: can't mul, stack too short\n", line);
-exit(EXIT_FAILURE);
-}
-n = (*stack)->n;
-instruct_pop(stack, line);
-(*stack)->n *= n;
+    int n;
+    if (var.len_stack < 2)
+    {
+        fprintf(stderr, "L%u: can't mul, stack too short\n", line);
+        exit(EXIT_FAILURE);
+    }
+    n = (*stack)->n;
+    instruct_pop(stack, line);
+    (*stack)->n *= n;
 }
